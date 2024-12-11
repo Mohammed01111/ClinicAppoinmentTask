@@ -3,7 +3,7 @@ using ClinicAppoinmentTask.Repositories;
 
 namespace ClinicAppoinmentTask.Services
 {
-    public class ClinicService
+    public class ClinicService : IClinicService
     {
         private readonly IClinicRepo _clinicRepo;
 
