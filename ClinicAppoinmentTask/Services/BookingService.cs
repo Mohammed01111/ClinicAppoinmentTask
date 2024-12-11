@@ -26,5 +26,7 @@ namespace ClinicAppoinmentTask.Services
 
             _bookingRepo.AddBooking(booking);
         }
+
+
     }
 }
