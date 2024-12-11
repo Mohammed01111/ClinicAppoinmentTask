@@ -29,5 +29,8 @@ namespace ClinicAppoinmentTask.Services
 
         public IEnumerable<Booking> GetAppointmentsByClinic(int clinicId) =>
             _bookingRepo.GetBookingsByClinic(clinicId);
+
+        public IEnumerable<Booking> GetAppointmentsByPatient(int patientId) =>
+            _bookingRepo.GetBookingsByPatient(patientId);
     }
 }
