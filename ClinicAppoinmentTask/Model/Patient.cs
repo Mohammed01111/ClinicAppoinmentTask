@@ -6,6 +6,7 @@ namespace ClinicAppoinmentTask.Model
     public class Patient
     {
         [Key]
+        [JsonIgnore]
         public int PID { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }

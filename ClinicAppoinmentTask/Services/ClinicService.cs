@@ -33,7 +33,7 @@ namespace ClinicAppoinmentTask.Services
 
         public void UpdateClinic(Clinic updatedClinic)
         {
-            var clinic = _clinicRepo.GetClinics().FirstOrDefault(c => c.CID == updatedClinic.CID);
+            var clinic = _clinicRepo.GetClinics().FirstOrDefault(c => c.Specialization == updatedClinic.Specialization);
             if (clinic == null)
                 throw new Exception("Clinic not found.");
 

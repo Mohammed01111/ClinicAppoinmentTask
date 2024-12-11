@@ -16,11 +16,16 @@ namespace ClinicAppoinmentTask.Controllers
         }
         // POST: api/patient/add
         [HttpPost("add")]
-        public IActionResult AddPatient([FromBody] Patient patient)
+        public IActionResult AddPatient(string Name, int age, string gender)
         {
             try
             {
-                _patientService.AddPatient(patient);
+                _patientService.AddPatient(new Patient
+                {
+                    Name = Name,
+                    Age = age,
+                    Gender = gender
+                });
                 return Ok("Patient added successfully");
             }
             catch (Exception ex)
@@ -54,11 +59,17 @@ namespace ClinicAppoinmentTask.Controllers
 
         // PUT: api/patient/update
         [HttpPut("update")]
-        public IActionResult UpdatePatient([FromBody] Patient updatedPatient)
+        public IActionResult UpdatePatient(string Name, int age, string gender,int id)
         {
             try
             {
-                _patientService.UpdatePatient(updatedPatient);
+                _patientService.UpdatePatient(new Patient
+                {
+                    Name = Name,
+                    Age = age,
+                    Gender = gender,
+                    PID = id 
+                });
                 return Ok("Patient updated successfully");
             }
             catch (Exception ex)

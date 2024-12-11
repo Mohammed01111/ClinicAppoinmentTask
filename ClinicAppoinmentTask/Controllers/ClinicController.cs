@@ -16,11 +16,16 @@ namespace ClinicAppoinmentTask.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddClinic([FromBody] Clinic clinic)
+        public IActionResult AddClinic(string name , int NumberOfSlots)
         {
             try
             {
-                _clinicService.AddClinic(clinic);
+                _clinicService.AddClinic(new Clinic
+                {
+                    Specialization = name,
+                    NumberOfSlots = NumberOfSlots
+
+                });
                 return Ok("Clinic added successfully");
             }
             catch (Exception ex)
