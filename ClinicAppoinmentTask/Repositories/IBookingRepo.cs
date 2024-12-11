@@ -8,5 +8,11 @@ namespace ClinicAppoinmentTask.Repositories
         IEnumerable<Booking> GetAllBookings();
         void RemoveBooking(Booking booking);
         void UpdateBooking(Booking booking);
+
+        IEnumerable<Booking> GetBookingsByClinic(int clinicId);
+        IEnumerable<Booking> GetBookingsByPatient(int patientId);
+
+
+        IEnumerable<Booking> GetAppointmentsByName(string name);
     }
 }
