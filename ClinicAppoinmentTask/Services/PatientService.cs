@@ -37,5 +37,18 @@ namespace ClinicAppoinmentTask.Services
             _patientRepo.RemovePatient(patient);
         }
 
+        public void UpdatePatient(Patient updatedPatient)
+        {
+            var patient = _patientRepo.GetPatients().FirstOrDefault(p => p.PID == updatedPatient.PID);
+            if (patient == null)
+                throw new Exception("Patient not found.");
+
+            patient.Name = updatedPatient.Name;
+            patient.Age = updatedPatient.Age;
+            patient.Gender = updatedPatient.Gender;
+
+            _patientRepo.UpdatePatient(patient);
+        }
+
     }
 }
