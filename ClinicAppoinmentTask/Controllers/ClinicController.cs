@@ -51,5 +51,19 @@ namespace ClinicAppoinmentTask.Controllers
                 return NotFound($"Error: {ex.Message}");
             }
         }
-    }
+
+        // GET: api/clinic/specialization/{specialization}
+        [HttpGet("specialization/{specialization}")]
+        public IActionResult GetClinicBySpecialization(string specialization)
+        {
+            try
+            {
+                var clinic = _clinicService.GetClinicBySpecialization(specialization);
+                return Ok(clinic);
+            }
+            catch (Exception ex)
+            {
+                return NotFound($"Error: {ex.Message}");
+            }
+        }
 }
