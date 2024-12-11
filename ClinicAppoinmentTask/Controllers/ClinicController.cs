@@ -29,5 +29,13 @@ namespace ClinicAppoinmentTask.Controllers
             }
         }
 
+        // GET: api/clinic/all
+        [HttpGet("all")]
+        public IActionResult GetAllClinics()
+        {
+            var clinics = _clinicService.GetAllClinics();
+            return Ok(clinics);
+        }
+
     }
 }
