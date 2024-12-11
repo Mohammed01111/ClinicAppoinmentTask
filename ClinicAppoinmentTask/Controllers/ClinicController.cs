@@ -82,5 +82,21 @@ namespace ClinicAppoinmentTask.Controllers
                 return NotFound($"Error: {ex.Message}");
             }
         }
+
+
+        // DELETE: api/clinic/remove/{clinicId}
+        [HttpDelete("remove/{clinicId}")]
+        public IActionResult RemoveClinic(int clinicId)
+        {
+            try
+            {
+                _clinicService.RemoveClinic(clinicId);
+                return Ok("Clinic removed successfully");
+            }
+            catch (Exception ex)
+            {
+                return NotFound($"Error: {ex.Message}");
+            }
+        }
     }
 }
