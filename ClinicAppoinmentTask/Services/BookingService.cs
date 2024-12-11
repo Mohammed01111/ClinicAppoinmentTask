@@ -34,6 +34,22 @@ namespace ClinicAppoinmentTask.Services
 
             _bookingRepo.RemoveBooking(existingBooking);
         }
+        public void UpdateBooking(int bookingId, int patientId, int clinicId, DateTime date, int slotNumber)
+        {
+            if (slotNumber < 1 || slotNumber > 20)
+                throw new Exception("Slot number must be between 1 and 20");
+
+            var existingBooking = _bookingRepo.GetBookingById(bookingId);
+            if (existingBooking == null)
+                throw new Exception("Booking not found");
+
+            existingBooking.PID = patientId;
+            existingBooking.CID = clinicId;
+            existingBooking.Date = date;
+            existingBooking.SlotNumber = slotNumber;
+
+            _bookingRepo.UpdateBooking(existingBooking);
+        }
 
         public IEnumerable<Booking> GetAppointmentsByClinic(int clinicId) =>
             _bookingRepo.GetBookingsByClinic(clinicId);
