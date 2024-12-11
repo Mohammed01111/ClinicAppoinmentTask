@@ -22,5 +22,7 @@ namespace ClinicAppoinmentTask.Services
         {
             return _clinicRepo.GetClinics();
         }
+
+
     }
 }
