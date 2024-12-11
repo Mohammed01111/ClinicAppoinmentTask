@@ -12,5 +12,22 @@ namespace ClinicAppoinmentTask
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.Patient)
+                .WithMany(p => p.Bookings)
+                .HasForeignKey(b => b.PID);
+
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.Clinic)
+                .WithMany(c => c.Bookings)
+                .HasForeignKey(b => b.CID);
+
+            modelBuilder.Entity<Clinic>()
+                .HasIndex(c => c.Specialization)
+                .IsUnique();
+        }
     }
 }
