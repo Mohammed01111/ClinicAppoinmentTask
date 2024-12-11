@@ -19,5 +19,17 @@ namespace ClinicAppoinmentTask.Repositories
 
         public IEnumerable<Clinic>GetClinics() => _context.Clinics.ToList();
 
+        public void RemoveClinic(Clinic clinic)
+        {
+            _context.Clinics?.Remove(clinic);
+            _context.SaveChanges();
+        }
+
+        public void UpdateClinic(Clinic clinic) 
+        {
+            _context.Clinics.Update(clinic);
+            _context.SaveChanges();
+        }
+
     }
 }
