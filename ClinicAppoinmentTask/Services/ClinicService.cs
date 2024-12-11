@@ -31,5 +31,18 @@ namespace ClinicAppoinmentTask.Services
             _clinicRepo.RemoveClinic(clinic);
         }
 
+        public void UpdateClinic(Clinic updatedClinic)
+        {
+            var clinic = _clinicRepo.GetClinics().FirstOrDefault(c => c.CID == updatedClinic.CID);
+            if (clinic == null)
+                throw new Exception("Clinic not found.");
+
+            clinic.Specialization = updatedClinic.Specialization;
+            clinic.NumberOfSlots = updatedClinic.NumberOfSlots;
+
+            _clinicRepo.UpdateClinic(clinic);
+        }
+
+
     }
 }
