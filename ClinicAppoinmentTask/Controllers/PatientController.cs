@@ -52,5 +52,36 @@ namespace ClinicAppoinmentTask.Controllers
             }
         }
 
+        // PUT: api/patient/update
+        [HttpPut("update")]
+        public IActionResult UpdatePatient([FromBody] Patient updatedPatient)
+        {
+            try
+            {
+                _patientService.UpdatePatient(updatedPatient);
+                return Ok("Patient updated successfully");
+            }
+            catch (Exception ex)
+            {
+                return NotFound($"Error: {ex.Message}");
+            }
+        }
+
+        // DELETE: api/patient/remove/{patientId}
+        [HttpDelete("remove/{patientId}")]
+        public IActionResult RemovePatient(int patientId)
+        {
+            try
+            {
+                _patientService.RemovePatient(patientId);
+                return Ok("Patient removed successfully");
+            }
+            catch (Exception ex)
+            {
+                return NotFound($"Error: {ex.Message}");
+            }
+        }
     }
+
 }
+
