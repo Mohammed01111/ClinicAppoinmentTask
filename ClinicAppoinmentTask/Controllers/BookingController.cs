@@ -79,5 +79,23 @@ namespace ClinicAppoinmentTask.Controllers
             }
         }
 
+        // Get appointments by patient's name
+        [HttpGet("name/{name}")]
+        public IActionResult GetAppointmentsByName(string name)
+        {
+            try
+            {
+                var appointments = _bookingService.GetAppointmentsByName(name);
+                if (appointments == null || !appointments.Any())
+                    return NotFound("No appointments found for this name");
+
+                return Ok(appointments);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
     }
 }
