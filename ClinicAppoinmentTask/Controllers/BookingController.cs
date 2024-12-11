@@ -17,6 +17,23 @@ namespace ClinicAppoinmentTask.Controllers
             _patientService = patientService;
             _clinicService = clinicService;
         }
+        // Get booking details by booking ID
+        [HttpGet("booking/{bookingId}")]
+        public IActionResult GetBookingById(int bookingId)
+        {
+            try
+            {
+                var booking = _bookingService.GetBookingById(bookingId);
+                if (booking == null)
+                    return NotFound("Booking not found");
+
+                return Ok(booking);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
 
         [HttpPost("book")]
         public IActionResult BookAppointment(int patientId, int clinicId, DateTime date, int slotNumber)
@@ -96,6 +113,9 @@ namespace ClinicAppoinmentTask.Controllers
                 return BadRequest($"Error: {ex.Message}");
             }
         }
+
+        
+
         [HttpDelete("remove/{bookingId}")]
         public IActionResult RemoveBooking(int bookingId)
         {
