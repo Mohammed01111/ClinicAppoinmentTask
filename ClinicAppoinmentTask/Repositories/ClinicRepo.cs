@@ -30,6 +30,12 @@ namespace ClinicAppoinmentTask.Repositories
             _context.Clinics.Update(clinic);
             _context.SaveChanges();
         }
+        public Clinic GetClinicBySpecialization(string specialization)
+        {
+            return _context.Clinics
+                .FirstOrDefault(c => c.Specialization.Equals(specialization, StringComparison.OrdinalIgnoreCase));
+
+        }
 
     }
 }
