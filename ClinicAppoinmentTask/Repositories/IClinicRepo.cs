@@ -8,5 +8,6 @@ namespace ClinicAppoinmentTask.Repositories
         IEnumerable<Clinic> GetClinics();
         void RemoveClinic(Clinic clinic);
         void UpdateClinic(Clinic clinic);
+        Clinic GetClinicBySpecialization(string specialization);
     }
 }
