@@ -47,6 +47,12 @@ namespace ClinicAppoinmentTask.Repositories
                     .Include(b => b.Clinic)
                     .ToList();
 
+        public IEnumerable<Booking> GetBookingsByClinic(int clinicId) =>
+           _context.Bookings
+                   .Where(b => b.CID == clinicId)
+                   .Include(b => b.Patient)
+                   .ToList();
+
 
     }
 }
