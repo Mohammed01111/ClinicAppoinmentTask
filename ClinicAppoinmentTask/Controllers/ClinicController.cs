@@ -66,4 +66,21 @@ namespace ClinicAppoinmentTask.Controllers
                 return NotFound($"Error: {ex.Message}");
             }
         }
+
+
+        // PUT: api/clinic/update
+        [HttpPut("update")]
+        public IActionResult UpdateClinic([FromBody] Clinic updatedClinic)
+        {
+            try
+            {
+                _clinicService.UpdateClinic(updatedClinic);
+                return Ok("Clinic updated successfully");
+            }
+            catch (Exception ex)
+            {
+                return NotFound($"Error: {ex.Message}");
+            }
+        }
+    }
 }
