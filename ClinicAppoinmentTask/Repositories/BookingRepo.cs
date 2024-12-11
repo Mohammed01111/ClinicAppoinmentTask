@@ -1,4 +1,5 @@
 ﻿using ClinicAppoinmentTask.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClinicAppoinmentTask.Repositories
 {
@@ -22,6 +23,14 @@ namespace ClinicAppoinmentTask.Repositories
             _context.Bookings.Remove(booking);
             _context.SaveChanges();
 
+        }
+
+        public IEnumerable<Booking> GetAllBookings()
+        {
+            return _context.Bookings
+                .Include(b => b.Patient) 
+                .Include(b => b.Clinic)  
+                .ToList();
         }
 
 
