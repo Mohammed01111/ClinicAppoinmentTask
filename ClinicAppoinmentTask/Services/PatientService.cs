@@ -50,5 +50,19 @@ namespace ClinicAppoinmentTask.Services
             _patientRepo.UpdatePatient(patient);
         }
 
+        public IEnumerable<Patient> GetAllPatients()
+        {
+            return _patientRepo.GetPatients();
+        }
+
+        
+        public Patient GetPatientById(int patientId)
+        {
+            var patient = _patientRepo.GetPatients().FirstOrDefault(p => p.PID == patientId);
+            if (patient == null)
+                throw new Exception("Patient not found.");
+
+            return patient;
+        }
     }
 }
