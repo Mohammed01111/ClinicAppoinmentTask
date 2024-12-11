@@ -2,7 +2,7 @@
 
 namespace ClinicAppoinmentTask.Repositories
 {
-    public class PatientRepo
+    public class PatientRepo : IPatientRepo
     {
         private readonly AppDbContext _context;
 
