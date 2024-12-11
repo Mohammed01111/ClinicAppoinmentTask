@@ -18,5 +18,9 @@ namespace ClinicAppoinmentTask.Services
 
             _clinicRepo.AddClinic(clinic);
         }
+        public IEnumerable<Clinic> GetAllClinics()
+        {
+            return _clinicRepo.GetClinics();
+        }
     }
 }
