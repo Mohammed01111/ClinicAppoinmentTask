@@ -17,6 +17,15 @@ namespace ClinicAppoinmentTask.Repositories
             _context.SaveChanges();
         }
 
+        public void RemoveBooking(Booking booking)
+        {
+            _context.Bookings.Remove(booking);
+            _context.SaveChanges();
+
+        }
+
+
+
 
     }
 }
