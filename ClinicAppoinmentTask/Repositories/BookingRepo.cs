@@ -34,7 +34,12 @@ namespace ClinicAppoinmentTask.Repositories
         }
 
 
+        public void UpdateBooking(Booking booking)
+        {
+                _context.Bookings.Update(booking);
+                _context.SaveChanges();
 
+        }
 
     }
 }
