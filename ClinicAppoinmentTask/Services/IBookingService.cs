@@ -11,6 +11,7 @@ namespace ClinicAppoinmentTask.Services
 
         void UpdateBooking(int bookingId, int patientId, int clinicId, DateTime date, int slotNumber);
         void RemoveBooking(int bookingId);
+        Booking GetBookingById(int bookingId);
 
     }
 }

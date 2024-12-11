@@ -105,7 +105,7 @@ namespace ClinicAppoinmentTask.Controllers
                 if (booking == null)
                     return NotFound("Booking not found");
 
-                _bookingService.RemoveBooking(booking);
+                _bookingService.RemoveBooking(bookingId);
                 return Ok("Booking removed successfully");
             }
             catch (Exception ex)
