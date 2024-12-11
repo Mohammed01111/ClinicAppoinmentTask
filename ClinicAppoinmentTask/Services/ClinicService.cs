@@ -42,6 +42,14 @@ namespace ClinicAppoinmentTask.Services
 
             _clinicRepo.UpdateClinic(clinic);
         }
+        public Clinic GetClinicById(int clinicId)
+        {
+            var clinic = _clinicRepo.GetClinics().FirstOrDefault(c => c.CID == clinicId);
+            if (clinic == null)
+                throw new Exception("Clinic not found.");
+
+            return clinic;
+        }
 
         public Clinic GetClinicBySpecialization(string specialization)
         {
