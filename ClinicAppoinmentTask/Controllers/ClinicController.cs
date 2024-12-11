@@ -37,5 +37,19 @@ namespace ClinicAppoinmentTask.Controllers
             return Ok(clinics);
         }
 
+        // GET: api/clinic/{clinicId}
+        [HttpGet("{clinicId}")]
+        public IActionResult GetClinicById(int clinicId)
+        {
+            try
+            {
+                var clinic = _clinicService.GetClinicById(clinicId);
+                return Ok(clinic);
+            }
+            catch (Exception ex)
+            {
+                return NotFound($"Error: {ex.Message}");
+            }
+        }
     }
 }
