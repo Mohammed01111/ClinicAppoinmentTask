@@ -43,6 +43,13 @@ namespace ClinicAppoinmentTask.Services
             _clinicRepo.UpdateClinic(clinic);
         }
 
+        public Clinic GetClinicBySpecialization(string specialization)
+        {
+            var clinic = _clinicRepo.GetClinicBySpecialization(specialization);
+            if (clinic == null)
+                throw new Exception($"No clinic found with specialization: {specialization}");
 
+            return clinic;
+        }
     }
 }
