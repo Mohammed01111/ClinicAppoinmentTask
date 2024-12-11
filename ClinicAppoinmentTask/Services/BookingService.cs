@@ -50,6 +50,8 @@ namespace ClinicAppoinmentTask.Services
 
             _bookingRepo.UpdateBooking(existingBooking);
         }
+        public Booking GetBookingById(int bookingId) =>
+             _bookingRepo.GetBookingById(bookingId);
 
         public IEnumerable<Booking> GetAppointmentsByClinic(int clinicId) =>
             _bookingRepo.GetBookingsByClinic(clinicId);

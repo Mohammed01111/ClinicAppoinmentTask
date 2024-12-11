@@ -96,6 +96,25 @@ namespace ClinicAppoinmentTask.Controllers
                 return BadRequest($"Error: {ex.Message}");
             }
         }
+        [HttpDelete("remove/{bookingId}")]
+        public IActionResult RemoveBooking(int bookingId)
+        {
+            try
+            {
+                var booking = _bookingService.GetBookingById(bookingId);
+                if (booking == null)
+                    return NotFound("Booking not found");
+
+                _bookingService.RemoveBooking(booking);
+                return Ok("Booking removed successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
+
 
     }
 }
