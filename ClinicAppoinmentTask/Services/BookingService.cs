@@ -26,6 +26,14 @@ namespace ClinicAppoinmentTask.Services
 
             _bookingRepo.AddBooking(booking);
         }
+        public void RemoveBooking(int bookingId)
+        {
+            var existingBooking = _bookingRepo.GetBookingById(bookingId);
+            if (existingBooking == null)
+                throw new Exception("Booking not found");
+
+            _bookingRepo.RemoveBooking(existingBooking);
+        }
 
         public IEnumerable<Booking> GetAppointmentsByClinic(int clinicId) =>
             _bookingRepo.GetBookingsByClinic(clinicId);

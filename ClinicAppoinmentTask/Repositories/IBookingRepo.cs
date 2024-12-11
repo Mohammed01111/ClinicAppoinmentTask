@@ -14,5 +14,6 @@ namespace ClinicAppoinmentTask.Repositories
 
 
         IEnumerable<Booking> GetAppointmentsByName(string name);
+        Booking GetBookingById(int bookingId);
     }
 }
