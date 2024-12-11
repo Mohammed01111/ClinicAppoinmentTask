@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicAppoinmentTask.Repositories
 {
-    public class BookingRepo
+    public class BookingRepo : IBookingRepo
     {
         private readonly AppDbContext _context;
 
@@ -28,16 +28,16 @@ namespace ClinicAppoinmentTask.Repositories
         public IEnumerable<Booking> GetAllBookings()
         {
             return _context.Bookings
-                .Include(b => b.Patient) 
-                .Include(b => b.Clinic)  
+                .Include(b => b.Patient)
+                .Include(b => b.Clinic)
                 .ToList();
         }
 
 
         public void UpdateBooking(Booking booking)
         {
-                _context.Bookings.Update(booking);
-                _context.SaveChanges();
+            _context.Bookings.Update(booking);
+            _context.SaveChanges();
 
         }
 
