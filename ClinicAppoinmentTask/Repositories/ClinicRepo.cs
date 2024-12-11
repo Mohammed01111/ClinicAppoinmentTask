@@ -1,4 +1,6 @@
-﻿namespace ClinicAppoinmentTask.Repositories
+﻿using ClinicAppoinmentTask.Model;
+
+namespace ClinicAppoinmentTask.Repositories
 {
     public class ClinicRepo
     {
@@ -8,5 +10,13 @@
         {
             _context = context;
         }
+
+        public void AddClinic(Clinic clinic)
+        {   
+            _context.Clinics.Add(clinic);
+            _context.SaveChanges();
+        }
+
+
     }
 }
