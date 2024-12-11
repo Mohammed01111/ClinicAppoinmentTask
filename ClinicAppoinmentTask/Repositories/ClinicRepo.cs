@@ -2,7 +2,7 @@
 
 namespace ClinicAppoinmentTask.Repositories
 {
-    public class ClinicRepo
+    public class ClinicRepo : IClinicRepo
     {
         private readonly AppDbContext _context;
 
@@ -12,12 +12,12 @@ namespace ClinicAppoinmentTask.Repositories
         }
 
         public void AddClinic(Clinic clinic)
-        {   
+        {
             _context.Clinics.Add(clinic);
             _context.SaveChanges();
         }
 
-        public IEnumerable<Clinic>GetClinics() => _context.Clinics.ToList();
+        public IEnumerable<Clinic> GetClinics() => _context.Clinics.ToList();
 
         public void RemoveClinic(Clinic clinic)
         {
@@ -25,7 +25,7 @@ namespace ClinicAppoinmentTask.Repositories
             _context.SaveChanges();
         }
 
-        public void UpdateClinic(Clinic clinic) 
+        public void UpdateClinic(Clinic clinic)
         {
             _context.Clinics.Update(clinic);
             _context.SaveChanges();
