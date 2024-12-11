@@ -3,7 +3,7 @@ using ClinicAppoinmentTask.Repositories;
 
 namespace ClinicAppoinmentTask.Services
 {
-    public class PatientService
+    public class PatientService : IPatientService
     {
         private readonly IPatientRepo _patientRepo;
 
@@ -55,7 +55,7 @@ namespace ClinicAppoinmentTask.Services
             return _patientRepo.GetPatients();
         }
 
-        
+
         public Patient GetPatientById(int patientId)
         {
             var patient = _patientRepo.GetPatients().FirstOrDefault(p => p.PID == patientId);
