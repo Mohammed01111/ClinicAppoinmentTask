@@ -61,5 +61,23 @@ namespace ClinicAppoinmentTask.Controllers
             }
         }
 
+        // Get appointments by patient ID
+        [HttpGet("patient/{patientId}")]
+        public IActionResult GetAppointmentsByPatient(int patientId)
+        {
+            try
+            {
+                var appointments = _bookingService.GetAppointmentsByPatient(patientId);
+                if (appointments == null || !appointments.Any())
+                    return NotFound("No appointments found for this patient");
+
+                return Ok(appointments);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
     }
 }
