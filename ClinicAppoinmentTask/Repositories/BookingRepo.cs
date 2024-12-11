@@ -53,6 +53,8 @@ namespace ClinicAppoinmentTask.Repositories
                    .Include(b => b.Patient)
                    .ToList();
 
+        public IEnumerable<Booking> GetAppointmentsByName(string name) =>
+        _context.Bookings.Where(a => a.Patient.Name.Contains(name));
 
     }
 }
