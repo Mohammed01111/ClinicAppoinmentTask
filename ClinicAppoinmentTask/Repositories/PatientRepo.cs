@@ -29,6 +29,8 @@ namespace ClinicAppoinmentTask.Repositories
             _context.SaveChanges();
         }
 
-        
+        public IEnumerable<Patient> GetPatients() => _context.Patients.ToList();
+
+
     }
 }
