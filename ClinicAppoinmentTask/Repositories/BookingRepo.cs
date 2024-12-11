@@ -25,6 +25,13 @@ namespace ClinicAppoinmentTask.Repositories
 
         }
 
+        public Booking GetBookingById(int bookingId)
+        {
+            return _context.Bookings
+                .Include(b => b.Patient) 
+                .Include(b => b.Clinic)  
+                .FirstOrDefault(b => b.BookingId == bookingId);
+        }
         public IEnumerable<Booking> GetAllBookings()
         {
             return _context.Bookings
