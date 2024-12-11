@@ -9,5 +9,6 @@ namespace ClinicAppoinmentTask.Services
         Patient GetPatientById(int patientId);
         void RemovePatient(int patientId);
         void UpdatePatient(Patient updatedPatient);
+
     }
 }
