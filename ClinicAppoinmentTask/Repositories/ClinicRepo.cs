@@ -33,7 +33,7 @@ namespace ClinicAppoinmentTask.Repositories
         public Clinic GetClinicBySpecialization(string specialization)
         {
             return _context.Clinics
-                .FirstOrDefault(c => c.Specialization.Equals(specialization, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(c => c.Specialization.ToLower() == specialization.ToLower());
 
         }
 
